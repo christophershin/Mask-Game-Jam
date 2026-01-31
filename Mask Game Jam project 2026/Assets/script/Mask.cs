@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -5,33 +6,46 @@ using UnityEngine.UI;
 
 public class Mask : MonoBehaviour
 {
-    [SerializeField] private Image maskImage;
-    [SerializeField] private TextMeshProUGUI maskDescription;
+    [SerializeField] private Image[] maskImages;
+    [SerializeField] private TextMeshProUGUI[] maskDescriptions;
     
     [SerializeField] private Sprite[] sprites;
     [SerializeField] private string[] descriptions;
-
+    
     private List<string> _ownedMasks = new List<string>();
-    private string _currentMask;
 
-    void Start()
+    private void Start()
     {
         _ownedMasks.Add("White");
         _ownedMasks.Add("Odd");
         _ownedMasks.Add("Even");
         _ownedMasks.Add("Gojo");
-        UpdateMask();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        for (int i = 0; i < _ownedMasks.Count; i++)
         {
-            PreviousMask();
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            NextMask();
+            switch (_ownedMasks[i])
+            {
+                case "White":
+                    print("AAA");
+                    maskImages[i].sprite = sprites[0];
+                    maskDescriptions[i].text = descriptions[0];
+                    break;
+                case "Odd":
+                    maskImages[i].sprite = sprites[1];
+                    maskDescriptions[i].text = descriptions[1];
+                    break;
+                case "Even":
+                    maskImages[i].sprite = sprites[2];
+                    maskDescriptions[i].text = descriptions[2];
+                    break;
+                case "Gojo":
+                    maskImages[i].sprite = sprites[3];
+                    maskDescriptions[i].text = descriptions[3];
+                    break;
+            }
         }
     }
 
@@ -40,52 +54,8 @@ public class Mask : MonoBehaviour
         _ownedMasks.Add(mask);
     }
 
-    public string GetCurrentMask()
+    public List<string> GetCurrentMasks()
     {
-        return _currentMask;
-    }
-
-    public void NextMask()
-    {
-        if (_ownedMasks.Count <= 1) return;
-        
-        string tempMask = _ownedMasks[0];
-        _ownedMasks.RemoveAt(0);
-        _ownedMasks.Add(tempMask);
-        UpdateMask();
-        
-    }
-
-    public void PreviousMask()
-    {
-        if (_ownedMasks.Count <= 1) return;
-        string tempMask = _ownedMasks[_ownedMasks.Count - 1];
-        _ownedMasks.RemoveAt(_ownedMasks.Count - 1);
-        _ownedMasks.Insert(0, tempMask);
-        UpdateMask();
-    }
-    
-    private void UpdateMask()
-    {
-        _currentMask = _ownedMasks[0];
-        switch (_currentMask)
-        {
-            case "White":
-                maskImage.sprite = sprites[0];
-                maskDescription.text = descriptions[0];
-                break;
-            case "Odd":
-                maskImage.sprite = sprites[1];
-                maskDescription.text = descriptions[1];
-                break;
-            case "Even":
-                maskImage.sprite = sprites[2];
-                maskDescription.text = descriptions[2];
-                break;
-            case "Gojo":
-                maskImage.sprite = sprites[3];
-                maskDescription.text = descriptions[3];
-                break;
-        }
+        return _ownedMasks;
     }
 }
