@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using NUnit.Framework.Internal;
-using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -11,12 +10,13 @@ public class Dice : MonoBehaviour
     bool rolled = false;
     bool grabbed = false;
     Vector2 offset;
-    public int diceNumber;
+    int diceNumber;
 
     public int minDiceValue = 1;
     public int maxDiceValue = 6;
 
     public List<Sprite> DiceImage;
+    public Damage damage;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -30,13 +30,15 @@ public class Dice : MonoBehaviour
     {
         Vector3 mousePos = Input.mousePosition;
 
-        // Dice roll
+
         if(rolled)
         {
             diceNumber = Random.Range(minDiceValue, maxDiceValue + 1);
             Debug.Log(diceNumber);
             GetComponent<SpriteRenderer>().sprite = DiceImage[diceNumber-1];
-
+            
+            damage.DamageEnemy(diceNumber);
+            
             rolled = false;
         }
 
