@@ -23,6 +23,18 @@ public class Mask : MonoBehaviour
         UpdateMask();
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            PreviousMask();
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            NextMask();
+        }
+    }
+
     public void AddNewMask(string mask)
     {
         _ownedMasks.Add(mask);

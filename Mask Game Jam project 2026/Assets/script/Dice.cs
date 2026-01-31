@@ -15,7 +15,8 @@ public class Dice : MonoBehaviour
     public int minDiceValue = 1;
     public int maxDiceValue = 6;
 
-    public List<Sprite> DiceImage; 
+    public List<Sprite> DiceImage;
+    public Damage damage;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -35,7 +36,9 @@ public class Dice : MonoBehaviour
             diceNumber = Random.Range(minDiceValue, maxDiceValue + 1);
             Debug.Log(diceNumber);
             GetComponent<SpriteRenderer>().sprite = DiceImage[diceNumber-1];
-
+            
+            damage.DamageEnemy(diceNumber);
+            
             rolled = false;
         }
 
