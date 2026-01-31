@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 519326282481165811}
   - component: {fileID: 4304753349893547432}
   - component: {fileID: 841234944589330810}
+  - component: {fileID: 1734823660343870672}
+  - component: {fileID: 7399338009439169863}
   m_Layer: 0
   m_Name: Dice
   m_TagString: Untagged
@@ -79,8 +81,8 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 3589117536062990964, guid: 6bbc21d0542cbe94597a98915a59dc81, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -118,3 +120,70 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &1734823660343870672
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4175222849242240556}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.94, y: 3.94}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 3.94, y: 3.94}
+  m_EdgeRadius: 0
+--- !u!114 &7399338009439169863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4175222849242240556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7e3b0028ff31a64ba7ed94f5a30e9c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Dice
+  minDiceValue: 1
+  maxDiceValue: 6
+  DiceImage:
+  - {fileID: 3589117536062990964, guid: 6bbc21d0542cbe94597a98915a59dc81, type: 3}
+  - {fileID: -3213338478731498277, guid: 4d4f17d04f1500e4886f23ad20483ccd, type: 3}
+  - {fileID: -1317026252678793333, guid: 52fa76cd441764547a429aeac45db8b3, type: 3}
+  - {fileID: 5685415954165986859, guid: 8e53d5d68b0c044458874390e0a759e1, type: 3}
+  - {fileID: 8061504988731849811, guid: ca4d54da1e107d44baae39547311d3e5, type: 3}
+  - {fileID: 2839789567196417053, guid: 862d336eb63f2ff47b6b1d95c06bfd6e, type: 3}
