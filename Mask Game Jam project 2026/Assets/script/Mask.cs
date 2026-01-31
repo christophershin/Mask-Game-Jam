@@ -17,9 +17,9 @@ public class Mask : MonoBehaviour
     private void Start()
     {
         _ownedMasks.Add("White");
-        _ownedMasks.Add("Odd");
-        _ownedMasks.Add("Even");
-        _ownedMasks.Add("Gojo");
+        // _ownedMasks.Add("Odd");
+        // _ownedMasks.Add("Even");
+        // _ownedMasks.Add("Gojo");
     }
 
     void Update()
