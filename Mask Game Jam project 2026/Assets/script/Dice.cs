@@ -10,6 +10,7 @@ public class Dice : MonoBehaviour
     bool rolled = false;
     bool grabbed = false;
     Vector2 offset;
+    [HideInInspector]
     public int diceNumber;
 
     public int minDiceValue = 1;
@@ -17,7 +18,8 @@ public class Dice : MonoBehaviour
 
     public List<Sprite> DiceImage;
     public Damage damage;
-
+    Ray ray;
+    RaycastHit hit;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -53,7 +55,7 @@ public class Dice : MonoBehaviour
             }
         }
 
-        if(Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0))
         {
             if (grabbed == true && rolled == false)
             {
@@ -62,7 +64,32 @@ public class Dice : MonoBehaviour
                 rolled = true;
             }
         }
+
+
+        //pickUpDice();
+
+
+
     }
 
+
+    private void pickUpDice()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Vector3 mousePos = Input.mousePosition;
+        RaycastHit hit; // Variable to store information about the hit
+
+        // Perform the raycast
+        if (Physics.Raycast(ray, out hit))
+        {
+            if(grabbed)
+            {
+                hit.collider.gameObject.transform.position = mousePos;
+            }
+
+
+
+        }
+    }
 
 }

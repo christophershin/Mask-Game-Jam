@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7399338009439169863}
   m_Layer: 0
   m_Name: Dice
-  m_TagString: Untagged
+  m_TagString: Dice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -178,6 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e3b0028ff31a64ba7ed94f5a30e9c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dice
+  diceNumber: 0
   minDiceValue: 1
   maxDiceValue: 6
   DiceImage:
@@ -187,3 +188,4 @@ MonoBehaviour:
   - {fileID: 5685415954165986859, guid: 8e53d5d68b0c044458874390e0a759e1, type: 3}
   - {fileID: 8061504988731849811, guid: ca4d54da1e107d44baae39547311d3e5, type: 3}
   - {fileID: 2839789567196417053, guid: 862d336eb63f2ff47b6b1d95c06bfd6e, type: 3}
+  damage: {fileID: 0}
