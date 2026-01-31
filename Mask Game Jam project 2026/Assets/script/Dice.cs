@@ -10,7 +10,7 @@ public class Dice : MonoBehaviour
     bool rolled = false;
     bool grabbed = false;
     Vector2 offset;
-    int diceNumber;
+    public int diceNumber;
 
     public int minDiceValue = 1;
     public int maxDiceValue = 6;
@@ -65,14 +65,4 @@ public class Dice : MonoBehaviour
     }
 
 
-    private void OnMouse()
-    {
-
-    }
-
-    private void OnMouseUp()
-    {
-
-
-    }
 }
