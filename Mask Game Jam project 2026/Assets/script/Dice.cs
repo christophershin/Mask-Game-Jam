@@ -29,7 +29,7 @@ public class Dice : MonoBehaviour
     {
         Vector3 mousePos = Input.mousePosition;
 
-
+        // Dice
         if(rolled)
         {
             diceNumber = Random.Range(minDiceValue, maxDiceValue + 1);
