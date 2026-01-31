@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using NUnit.Framework.Internal;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -10,12 +11,12 @@ public class Dice : MonoBehaviour
     bool rolled = false;
     bool grabbed = false;
     Vector2 offset;
-    int diceNumber;
+    public int diceNumber;
 
     public int minDiceValue = 1;
     public int maxDiceValue = 6;
 
-    public List<Sprite> DiceImage; 
+    public List<Sprite> DiceImage;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
