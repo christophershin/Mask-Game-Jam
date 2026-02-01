@@ -24,7 +24,7 @@ public class Dice : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        damage = FindAnyObjectByType<Damage>();
     }
 
     // Update is called once per frame
