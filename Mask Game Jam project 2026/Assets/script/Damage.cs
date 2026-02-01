@@ -161,7 +161,7 @@ public class Damage : MonoBehaviour
                     {
                         damage = damage / 2;
                     }
-                        break;
+                    break;
                 case "Oops":
                     break;
                 case "Pie":
