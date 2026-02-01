@@ -10,6 +10,8 @@ public class Dice : MonoBehaviour
     bool rolled = false;
     bool grabbed = false;
 
+    private GameObject grabbedDiceID;
+
     [HideInInspector]
     public int diceNumber;
 
@@ -30,17 +32,16 @@ public class Dice : MonoBehaviour
     {
 
         if (CanRoll == false) return;
-        Vector3 mousePos = Input.mousePosition;
 
 
-
-        DiceState();
+        
 
 
         // grab dice
         if (Input.GetMouseButton(0))
         {
             pickUpDice();
+            MoveDice();
         }
 
         // drop dice
@@ -49,13 +50,14 @@ public class Dice : MonoBehaviour
             if (grabbed == true && rolled == false)
             {
                 Debug.Log("not grabbed");
+                grabbedDiceID = null;
                 grabbed = false;
                 rolled = true;
             }
         }
 
 
-
+        DiceState();
 
 
 
@@ -67,17 +69,34 @@ public class Dice : MonoBehaviour
 
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = transform.position.z;
 
         if (hit.collider != null && hit.collider.gameObject.CompareTag("Dice"))
         {
-            hit.collider.gameObject.transform.position = mousePosition;
-            hit.collider.gameObject.GetComponent<Dice>().grabbed = true;
+
+            grabbedDiceID = hit.collider.gameObject;
+
         }
 
 
     }
+
+    private void MoveDice()
+    {
+
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = transform.position.z;
+
+        Vector3 dir =  mousePosition - grabbedDiceID.transform.position;
+
+        if (grabbedDiceID)
+        {
+            grabbedDiceID.transform.position = Vector3.Lerp(grabbedDiceID.transform.position, mousePosition, 0.3f);
+
+            grabbedDiceID.GetComponent<Dice>().grabbed = true;
+            
+        }
+    }
+
 
 
     private void DiceState()

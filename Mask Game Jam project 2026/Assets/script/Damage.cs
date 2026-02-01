@@ -160,4 +160,18 @@ public class Damage : MonoBehaviour
     {
         SceneManager.LoadScene("Scenes/You Win");
     }
+
+
+    public int currentEnemy()
+    {
+        return _currentEnemy;
+    }
+
+    public int getEnemyHealth()
+    {
+
+        int health = _currentHealth;
+
+        return health;
+    }
 }

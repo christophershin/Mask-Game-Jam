@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -17,14 +18,17 @@ public class PickCards : MonoBehaviour
 
     [SerializeField] private Mask maskScript;
 
+
+    [SerializeField] private gameManager GameManager;
+
     private List<string> _maskOptions = new List<string>();
 
 
-    private Dice _dice;
+    //private Dice _dice;
 
     private void Start()
     {
-        _dice = FindAnyObjectByType<Dice>();
+        //_dice = FindAnyObjectByType<Dice>();
         //RollCards();
     }
     
@@ -32,7 +36,10 @@ public class PickCards : MonoBehaviour
     // CALL THIS FROM A DIFFERENT SCRIPT TO ROLL THE MASKS
     public void RollCards()
     {
-        _dice.CanRoll = false;
+        //_dice.CanRoll = false;
+        SetRollState(false);
+
+
         background.SetActive(true);
         
         _maskOptions.Clear();
@@ -65,8 +72,18 @@ public class PickCards : MonoBehaviour
 
     public void PickCard(int i)
     {
-        _dice.CanRoll = true;
+        //_dice.CanRoll = true;
+        SetRollState(true);
         maskScript.AddNewMask(_maskOptions[i]);
         background.SetActive(false);
+    }
+
+
+    void SetRollState(bool state)
+    {
+        for(int i=0; i<GameManager.dices.Count; i++)
+        {
+            GameManager.dices[i].GetComponent<Dice>().CanRoll = state;
+        }
     }
 }

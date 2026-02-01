@@ -44,3 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c593ec8089b5d4b9d1a3ea6039d7f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::gameManager
+  DiceValueText: {fileID: 0}
+  numOfDice: 1
+  dicePrefab: {fileID: 4175222849242240556, guid: 66f97a96b2be65e45afed88d2deb1260, type: 3}

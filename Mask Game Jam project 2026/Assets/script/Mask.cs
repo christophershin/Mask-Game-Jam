@@ -57,4 +57,12 @@ public class Mask : MonoBehaviour
     {
         return _ownedMasks;
     }
+
+
+    public int GetListSize()
+    {
+        int count = _ownedMasks.Count;
+
+        return count;
+    }
 }
