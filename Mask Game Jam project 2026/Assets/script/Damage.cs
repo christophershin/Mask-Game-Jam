@@ -108,12 +108,23 @@ public class Damage : MonoBehaviour
                     if (damage % 2 == 0) damage += 2;
                     break;
                 case "Gojo":
-                    damage *= 10;
+                    damage *= 5;
                     break;
                 case "Broken":
+                    int brokenMaskDmg = Random.Range(0, 15);
+                    damage += brokenMaskDmg;
                     break;
                 case "Devil":
-                    break;
+                    int devilMask = Random.Range(0, 2);
+                    if (devilMask == 0)
+                    {
+                        damage *= 3;
+                    }
+                    else
+                    {
+                        damage = damage / 2;
+                    }
+                        break;
                 case "Oops":
                     break;
                 case "Pie":
