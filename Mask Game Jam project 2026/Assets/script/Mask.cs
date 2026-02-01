@@ -17,9 +17,9 @@ public class Mask : MonoBehaviour
     private void Start()
     {
         _ownedMasks.Add("White");
-        _ownedMasks.Add("Odd");
-        _ownedMasks.Add("Even");
-        _ownedMasks.Add("Gojo");
+        // _ownedMasks.Add("Odd");
+        // _ownedMasks.Add("Even");
+        // _ownedMasks.Add("Gojo");
     }
 
     void Update()
@@ -29,7 +29,6 @@ public class Mask : MonoBehaviour
             switch (_ownedMasks[i])
             {
                 case "White":
-                    print("AAA");
                     maskImages[i].sprite = sprites[0];
                     maskDescriptions[i].text = descriptions[0];
                     break;
