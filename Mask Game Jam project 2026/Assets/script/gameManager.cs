@@ -14,6 +14,6 @@ public class gameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //DiceValueText.text = dice.GetComponent<Dice>().diceNumber.ToString();
+        
     }
 }

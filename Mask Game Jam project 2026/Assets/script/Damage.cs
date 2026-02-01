@@ -55,7 +55,7 @@ public class Damage : MonoBehaviour
                     if (damage % 2 == 0) damage += 2;
                     break;
                 case "Gojo":
-                    damage *= 100;
+                    damage *= 10;
                     break;
             }
         }

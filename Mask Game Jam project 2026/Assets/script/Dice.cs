@@ -9,7 +9,7 @@ public class Dice : MonoBehaviour
 
     bool rolled = false;
     bool grabbed = false;
-    Vector2 offset;
+
     [HideInInspector]
     public int diceNumber;
 
@@ -18,8 +18,6 @@ public class Dice : MonoBehaviour
 
     public List<Sprite> DiceImage;
     public Damage damage;
-    Ray ray;
-    RaycastHit hit;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,32 +28,22 @@ public class Dice : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (CanRoll == false) return;
         Vector3 mousePos = Input.mousePosition;
 
 
-        if(rolled)
-        {
-            diceNumber = Random.Range(minDiceValue, maxDiceValue + 1);
-            Debug.Log(diceNumber);
-            GetComponent<SpriteRenderer>().sprite = DiceImage[diceNumber-1];
-            
-            damage.DamageEnemy(diceNumber);
-            
-            rolled = false;
-        }
+
+        DiceState();
 
 
+        // grab dice
         if (Input.GetMouseButton(0))
         {
-            if (rolled == false)
-            {
-                Debug.Log("grabbed");
-                grabbed = true;
-                transform.Rotate(new Vector3(0, 0, 35));
-            }
+            pickUpDice();
         }
 
+        // drop dice
         if (Input.GetMouseButtonUp(0))
         {
             if (grabbed == true && rolled == false)
@@ -67,7 +55,7 @@ public class Dice : MonoBehaviour
         }
 
 
-        //pickUpDice();
+
 
 
 
@@ -76,20 +64,40 @@ public class Dice : MonoBehaviour
 
     private void pickUpDice()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Vector3 mousePos = Input.mousePosition;
-        RaycastHit hit; // Variable to store information about the hit
 
-        // Perform the raycast
-        if (Physics.Raycast(ray, out hit))
+        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = transform.position.z;
+
+        if (hit.collider != null && hit.collider.gameObject.CompareTag("Dice"))
         {
-            if(grabbed)
-            {
-                hit.collider.gameObject.transform.position = mousePos;
-            }
+            hit.collider.gameObject.transform.position = mousePosition;
+            hit.collider.gameObject.GetComponent<Dice>().grabbed = true;
+        }
 
 
+    }
 
+
+    private void DiceState()
+    {
+
+        if (rolled)
+        {
+            diceNumber = Random.Range(minDiceValue, maxDiceValue + 1);
+            Debug.Log(diceNumber);
+            GetComponent<SpriteRenderer>().sprite = DiceImage[diceNumber - 1];
+
+            damage.DamageEnemy(diceNumber);
+
+            rolled = false;
+        }
+        else if(!rolled && grabbed)
+        {
+            Debug.Log("grabbed");
+
+            transform.Rotate(new Vector3(0, 0, 35));
         }
     }
 
