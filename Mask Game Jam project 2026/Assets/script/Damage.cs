@@ -34,6 +34,10 @@ public class Damage : MonoBehaviour
     // Other scripts
     [SerializeField] private Mask mask;
     [SerializeField] private PickCards pickCards;
+    
+    // Important
+    private int _previousDamage;
+    private bool _firstMask = true;
 
     private void Start()
     {
@@ -130,12 +134,25 @@ public class Damage : MonoBehaviour
                 case "Pie":
                     break;
                 case "Sleep":
+                    damage += _previousDamage / 2;
                     break;
                 case "Snake":
                     break;
                 case "Theatre":
+                    if (_firstMask)
+                    {
+                        damage *= 2;
+                    }
+                    else
+                    {
+                        damage += 2;
+                    }
                     break;
                 case "Welding":
+                    if (diceNumber < 3)
+                    {
+                        damage *= 3;
+                    }
                     break;
             }
         }
@@ -143,6 +160,8 @@ public class Damage : MonoBehaviour
         _currentHealth -= damage;
         currentEnemyHealthText.text = _currentHealth.ToString();
         currentPlayerTurnsText.text = "Turns Left: " + _currentTurns.ToString();
+
+        _previousDamage = damage;
         
         if (_currentHealth <= 0)
         {
