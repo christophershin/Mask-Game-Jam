@@ -74,9 +74,10 @@ public class Dice : MonoBehaviour
         {
 
             grabbedDiceID = hit.collider.gameObject;
+            
+            
 
         }
-
 
     }
 
@@ -86,10 +87,12 @@ public class Dice : MonoBehaviour
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = transform.position.z;
 
-        Vector3 dir =  mousePosition - grabbedDiceID.transform.position;
+        
 
         if (grabbedDiceID)
         {
+            Vector3 dir =  mousePosition - grabbedDiceID.transform.position;
+            
             grabbedDiceID.transform.position = Vector3.Lerp(grabbedDiceID.transform.position, mousePosition, 0.3f);
 
             grabbedDiceID.GetComponent<Dice>().grabbed = true;
