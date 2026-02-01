@@ -8,11 +8,15 @@ using System;
 public class gameManager : MonoBehaviour
 {
 
-    public int numOfDice;
+    public int numOfDiceToSpawn;
     public GameObject dicePrefab;
 
     [HideInInspector]
+    public int numDiceCanPlay;
+
+    [HideInInspector]
     public List<GameObject> dices = new List<GameObject>();
+    public List<GameObject> dicePlayed = new List<GameObject>();
 
     public Transform spawnPos;
 
@@ -26,7 +30,7 @@ public class gameManager : MonoBehaviour
     private void Awake()
     {
 
-        for (int i = 0; i < numOfDice; i++)
+        for (int i = 0; i < numOfDiceToSpawn; i++)
         {
             GameObject _dice = Instantiate(dicePrefab);
             _dice.SetActive(false);
@@ -53,23 +57,18 @@ public class gameManager : MonoBehaviour
 
         if (lastMaskNum!= Mask.GetComponent<Mask>().GetListSize())
         {
-
             lastMaskNum = Mask.GetComponent<Mask>().GetListSize();
             int ownedMasks = Mask.GetComponent<Mask>().GetListSize();
+            
             
             for(int i=0; i<ownedMasks; i++)
             {
                 dices[i].SetActive(true);
                 dices[i].transform.position = spawnPos.position;
-                
-
             }
 
-
-
-            
-            
         }
-        
+
+
     }
 }

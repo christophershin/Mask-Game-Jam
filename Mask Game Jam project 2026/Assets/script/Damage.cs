@@ -14,6 +14,10 @@ public class Damage : MonoBehaviour
     private int _currentEnemy;
     private int _currentHealth;
     private int _currentTurns;
+
+    [HideInInspector]
+    public int PostDamage;
+
     
     // Enemy Infos Reference
     [SerializeField] private Sprite[] enemySprite;
@@ -39,9 +43,15 @@ public class Damage : MonoBehaviour
     private int _previousDamage;
     private bool _firstMask = true;
 
+    private gameManager GameManager;
+
+
     private void Start()
     {
-        
+        GameManager = FindAnyObjectByType<gameManager>();
+        GameManager.numDiceCanPlay = 1;
+
+
         List<int> pool = new List<int>();
 
         for (int i = 0; i < 9; i++)
@@ -65,6 +75,7 @@ public class Damage : MonoBehaviour
         _enemyNamesInOrder.Add(enemyNames[9]);
         
         _currentEnemy = 0;
+
         _currentTurns = playerTurns[_currentEnemy];
         _currentHealth = enemyHealth[_currentEnemy];
         currentEnemyName.text = _enemyNamesInOrder[_currentEnemy];
@@ -72,7 +83,30 @@ public class Damage : MonoBehaviour
         currentEnemyHealthText.text = _currentHealth.ToString();
         currentPlayerTurnsText.text = "Turns Left: " + _currentTurns.ToString();
     }
-    
+
+
+    private void Update()
+    {
+        currentPlayerTurnsText.text = "Turns Left: " + _currentTurns.ToString();
+        currentEnemyHealthText.text = _currentHealth.ToString();
+
+        if (_currentHealth <= 0)
+        {
+            NextEnemy();
+            return;
+        }
+
+        if (_currentTurns <= 0)
+        {
+            GameOver();
+            return;
+        }
+    }
+
+
+
+
+
     // randomn range kept drawing the same enemies again so i used this
     private int DrawRandom(List<int> pool)
     {
@@ -89,7 +123,6 @@ public class Damage : MonoBehaviour
 
         return value;
     }
-
 
 
     public void DamageEnemy(int diceNumber)
@@ -156,26 +189,14 @@ public class Damage : MonoBehaviour
                     break;
             }
         }
-        
-        _currentHealth -= damage;
-        currentEnemyHealthText.text = _currentHealth.ToString();
-        currentPlayerTurnsText.text = "Turns Left: " + _currentTurns.ToString();
 
         _previousDamage = damage;
         
-        if (_currentHealth <= 0)
-        {
-            NextEnemy();
-            return;
-        }
-        
-        _currentTurns -= 1;
 
-        if (_currentTurns <= 0)
-        {
-            GameOver();
-            return;
-        }
+
+        PostDamage += damage;
+
+
     }
 
     private void NextEnemy()
@@ -219,5 +240,32 @@ public class Damage : MonoBehaviour
         int health = _currentHealth;
 
         return health;
+    }
+
+
+    public int getCurrentTurn()
+    {
+        int turns = _currentTurns;
+
+        return turns;
+    }
+
+
+    public void PlayDice()
+    {
+
+        if(GameManager.dicePlayed.Count>0)
+        {
+            _currentTurns -= 1;
+            _currentHealth -= PostDamage;
+            PostDamage = 0;
+
+            GameManager.dicePlayed.Clear();
+            pickCards.SetRollState(true);
+
+
+        }
+
+    
     }
 }

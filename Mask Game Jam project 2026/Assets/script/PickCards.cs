@@ -106,7 +106,7 @@ public class PickCards : MonoBehaviour
     }
 
 
-    void SetRollState(bool state)
+    public void SetRollState(bool state)
     {
         for(int i=0; i<GameManager.dices.Count; i++)
         {

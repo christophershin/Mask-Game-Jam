@@ -351,6 +351,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c593ec8089b5d4b9d1a3ea6039d7f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::gameManager
+--- !u!114 &1970318790 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5499178980074630301, guid: de6a949a566d15841aa015708568e09b, type: 3}
+  m_PrefabInstance: {fileID: 3017040760924751483}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948e512eab4d88d4da28ff4e86067b5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Damage
 --- !u!1001 &2107718179
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -716,6 +727,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3837493506341509883, guid: f3d122e66e9a9164b8b30100e6ce0fb0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1970318790}
+    - target: {fileID: 3837493506341509883, guid: f3d122e66e9a9164b8b30100e6ce0fb0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayDice
+      objectReference: {fileID: 0}
+    - target: {fileID: 3837493506341509883, guid: f3d122e66e9a9164b8b30100e6ce0fb0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Damage, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3837493506341509883, guid: f3d122e66e9a9164b8b30100e6ce0fb0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7289555455439184353, guid: f3d122e66e9a9164b8b30100e6ce0fb0, type: 3}
       propertyPath: m_Pivot.x
       value: 0

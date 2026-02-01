@@ -7,6 +7,7 @@ public class Dice : MonoBehaviour
 {
     public bool CanRoll = true;
 
+
     bool rolled = false;
     bool grabbed = false;
 
@@ -20,46 +21,47 @@ public class Dice : MonoBehaviour
 
     public List<Sprite> DiceImage;
     public Damage damage;
+    public gameManager GameManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         damage = FindAnyObjectByType<Damage>();
+        GameManager = FindAnyObjectByType<gameManager>();
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (CanRoll == false) return;
-
-
-        
-
-
-        // grab dice
-        if (Input.GetMouseButton(0))
+        if (CanRoll)
         {
-            pickUpDice();
-            MoveDice();
-        }
 
-        // drop dice
-        if (Input.GetMouseButtonUp(0))
-        {
-            if (grabbed == true && rolled == false)
+            // grab dice
+            if (Input.GetMouseButton(0))
             {
-                Debug.Log("not grabbed");
-                grabbedDiceID = null;
-                grabbed = false;
-                rolled = true;
+                pickUpDice();
+                MoveDice();
             }
+
+            // drop dice
+            if (Input.GetMouseButtonUp(0))
+            {
+                if (grabbed == true)
+                {
+                    Debug.Log("not grabbed");
+                    grabbedDiceID = null;
+                    grabbed = false;
+                    rolled = true;
+                }
+            }
+
+
+            DiceState();
+
         }
-
-
-        DiceState();
-
-
 
     }
 
@@ -74,8 +76,9 @@ public class Dice : MonoBehaviour
         {
 
             grabbedDiceID = hit.collider.gameObject;
-            
-            
+
+            grabbedDiceID.GetComponent<Dice>().grabbed = true;
+
 
         }
 
@@ -87,15 +90,22 @@ public class Dice : MonoBehaviour
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = transform.position.z;
 
-        
 
         if (grabbedDiceID)
         {
-            Vector3 dir =  mousePosition - grabbedDiceID.transform.position;
-            
-            grabbedDiceID.transform.position = Vector3.Lerp(grabbedDiceID.transform.position, mousePosition, 0.3f);
+            Vector3 dir = mousePosition - grabbedDiceID.transform.position;
 
-            grabbedDiceID.GetComponent<Dice>().grabbed = true;
+            grabbedDiceID.transform.position = Vector3.Lerp(grabbedDiceID.transform.position, mousePosition, 0.3f);
+        }
+
+        if (grabbedDiceID)
+        {
+            Vector3 dir = mousePosition - grabbedDiceID.transform.position;
+        }
+            
+        if (grabbedDiceID && grabbed)
+        {
+            grabbedDiceID.transform.position = Vector3.Lerp(grabbedDiceID.transform.position, mousePosition, 0.3f);
             
         }
     }
@@ -112,8 +122,11 @@ public class Dice : MonoBehaviour
             GetComponent<SpriteRenderer>().sprite = DiceImage[diceNumber - 1];
 
             damage.DamageEnemy(diceNumber);
+            grabbedDiceID = null;
 
             rolled = false;
+            CanRoll = false;
+            GameManager.dicePlayed.Add(gameObject);
         }
         else if(!rolled && grabbed)
         {
@@ -121,6 +134,9 @@ public class Dice : MonoBehaviour
 
             transform.Rotate(new Vector3(0, 0, 35));
         }
+
+
+
     }
 
 }

@@ -133,21 +133,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 176038208934848250}
     m_Modifications:
     - target: {fileID: 671087806427953732, guid: 0710b4e8f3aaf274ea83ee40173aba58, type: 3}
-      propertyPath: dice
-      value: 
-      objectReference: {fileID: 4175222849242240556, guid: 66f97a96b2be65e45afed88d2deb1260, type: 3}
-    - target: {fileID: 671087806427953732, guid: 0710b4e8f3aaf274ea83ee40173aba58, type: 3}
       propertyPath: spawnPos
       value: 
       objectReference: {fileID: 2690861799639093865}
-    - target: {fileID: 671087806427953732, guid: 0710b4e8f3aaf274ea83ee40173aba58, type: 3}
-      propertyPath: numOfDice
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 671087806427953732, guid: 0710b4e8f3aaf274ea83ee40173aba58, type: 3}
-      propertyPath: dicePrefab
-      value: 
-      objectReference: {fileID: 4175222849242240556, guid: 66f97a96b2be65e45afed88d2deb1260, type: 3}
     - target: {fileID: 3211301625436111255, guid: 0710b4e8f3aaf274ea83ee40173aba58, type: 3}
       propertyPath: m_Name
       value: GameManager
