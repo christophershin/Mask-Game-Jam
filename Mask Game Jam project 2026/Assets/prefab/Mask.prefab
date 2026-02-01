@@ -571,7 +571,6 @@ GameObject:
   - component: {fileID: 6154590142333149215}
   - component: {fileID: 5449080645418655817}
   - component: {fileID: 6930002723867146048}
-  - component: {fileID: 798365728236307621}
   m_Layer: 5
   m_Name: Mask
   m_TagString: Untagged
@@ -706,19 +705,6 @@ MonoBehaviour:
   - Even Numbers Deal +2 Dice Damage
   - dds 2 dice instead of 1, 1 red and 1 blue. If both both dice land on 6 in the
     same roll then combine them into a purple die that does x10 damage
---- !u!114 &798365728236307621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4936955007370133245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 948e512eab4d88d4da28ff4e86067b5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Damage
-  mask: {fileID: 6930002723867146048}
 --- !u!1 &5093453035349273107
 GameObject:
   m_ObjectHideFlags: 0
