@@ -562,6 +562,42 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -7412101349327858738, guid: 260be4fa46eb37d4f812c874bac43383, type: 3}
     - target: {fileID: 6771507897472748466, guid: de6a949a566d15841aa015708568e09b, type: 3}
+      propertyPath: 'enemySprite.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2920897261870518306, guid: e3b411d147cecf54e9453f949165e77d, type: 3}
+    - target: {fileID: 6771507897472748466, guid: de6a949a566d15841aa015708568e09b, type: 3}
+      propertyPath: 'enemySprite.Array.data[2]'
+      value: 
+      objectReference: {fileID: 3876490047506029053, guid: 857132fae2df878459357a24673c3bb1, type: 3}
+    - target: {fileID: 6771507897472748466, guid: de6a949a566d15841aa015708568e09b, type: 3}
+      propertyPath: 'enemySprite.Array.data[3]'
+      value: 
+      objectReference: {fileID: -3672838139224769845, guid: 8da20be5574614a498011fa4c63ac10f, type: 3}
+    - target: {fileID: 6771507897472748466, guid: de6a949a566d15841aa015708568e09b, type: 3}
+      propertyPath: 'enemySprite.Array.data[4]'
+      value: 
+      objectReference: {fileID: 1872339713033050547, guid: 3643a373c5e7e924e97bdb0deb82afd9, type: 3}
+    - target: {fileID: 6771507897472748466, guid: de6a949a566d15841aa015708568e09b, type: 3}
+      propertyPath: 'enemySprite.Array.data[5]'
+      value: 
+      objectReference: {fileID: -2282307749292936185, guid: bfa94ea5ca25f4844982c6ccbe029eec, type: 3}
+    - target: {fileID: 6771507897472748466, guid: de6a949a566d15841aa015708568e09b, type: 3}
+      propertyPath: 'enemySprite.Array.data[6]'
+      value: 
+      objectReference: {fileID: 5787375416647575784, guid: 76633ebb12494554ea52c8c7e9dbfaac, type: 3}
+    - target: {fileID: 6771507897472748466, guid: de6a949a566d15841aa015708568e09b, type: 3}
+      propertyPath: 'enemySprite.Array.data[7]'
+      value: 
+      objectReference: {fileID: -8345435589167100473, guid: 0a8858f1f416fa84bafe121f0e846942, type: 3}
+    - target: {fileID: 6771507897472748466, guid: de6a949a566d15841aa015708568e09b, type: 3}
+      propertyPath: 'enemySprite.Array.data[8]'
+      value: 
+      objectReference: {fileID: -1626810751251048274, guid: 4a8de17fcfa29c343a628dbfded20265, type: 3}
+    - target: {fileID: 6771507897472748466, guid: de6a949a566d15841aa015708568e09b, type: 3}
+      propertyPath: 'enemySprite.Array.data[9]'
+      value: 
+      objectReference: {fileID: 6342359738501122925, guid: bee463904203d584c9add56be1dac364, type: 3}
+    - target: {fileID: 6771507897472748466, guid: de6a949a566d15841aa015708568e09b, type: 3}
       propertyPath: 'playerTurns.Array.data[0]'
       value: 4
       objectReference: {fileID: 0}
