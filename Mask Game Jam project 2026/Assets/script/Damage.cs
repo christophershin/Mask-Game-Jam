@@ -1,11 +1,41 @@
+using System;
 using System.Collections.Generic;
 using NUnit.Framework;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
+using Image = UnityEngine.UI.Image;
 
 public class Damage : MonoBehaviour
 {
-    [SerializeField] private Mask mask;
+    // Current Enemy
+    private int _currentEnemy;
+    private int _currentHealth;
     
+    // Enemy Infos
+    [SerializeField] private string[] enemyName;
+    [SerializeField] private Sprite[] enemySprite;
+    [SerializeField] private int[] enemyHealth;
+    
+    // Current Enemy Info
+    [SerializeField] private TextMeshProUGUI currentEnemyName;
+    [SerializeField] private Image currentEnemyImage;
+    [SerializeField] private TextMeshProUGUI currentEnemyHealthText;
+    
+    // Other scripts
+    [SerializeField] private Mask mask;
+    [SerializeField] private PickCards pickCards;
+
+    private void Start()
+    {
+        _currentEnemy = 0;
+        _currentHealth = enemyHealth[_currentEnemy];
+        currentEnemyName.text = enemyName[_currentEnemy];
+        currentEnemyImage.sprite = enemySprite[_currentEnemy];
+        currentEnemyHealthText.text = enemyHealth[_currentEnemy].ToString();
+    }
+
+
     public void DamageEnemy(int diceNumber)
     {
         int damage = diceNumber;
@@ -30,7 +60,24 @@ public class Damage : MonoBehaviour
             }
         }
         
+        _currentHealth -= damage;
+        currentEnemyHealthText.text = _currentHealth.ToString();
         
-        print("Did " + damage + " Damage");
+        if (_currentHealth <= 0)
+        {
+            pickCards.RollCards();
+            NextEnemy();
+        }
     }
+
+    private void NextEnemy()
+    {
+        _currentEnemy += 1;
+        _currentHealth = enemyHealth[_currentEnemy];
+        currentEnemyName.text = enemyName[_currentEnemy];
+        currentEnemyImage.sprite = enemySprite[_currentEnemy];
+        currentEnemyHealthText.text = enemyHealth[_currentEnemy].ToString();
+    }
+    
+    
 }
