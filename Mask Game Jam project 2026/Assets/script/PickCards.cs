@@ -20,8 +20,11 @@ public class PickCards : MonoBehaviour
     private List<string> _maskOptions = new List<string>();
 
 
+    private Dice _dice;
+
     private void Start()
     {
+        _dice = FindAnyObjectByType<Dice>();
         //RollCards();
     }
     
@@ -29,6 +32,7 @@ public class PickCards : MonoBehaviour
     // CALL THIS FROM A DIFFERENT SCRIPT TO ROLL THE MASKS
     public void RollCards()
     {
+        _dice.CanRoll = false;
         background.SetActive(true);
         
         _maskOptions.Clear();
@@ -61,6 +65,7 @@ public class PickCards : MonoBehaviour
 
     public void PickCard(int i)
     {
+        _dice.CanRoll = true;
         maskScript.AddNewMask(_maskOptions[i]);
         background.SetActive(false);
     }

@@ -72,12 +72,22 @@ public class Damage : MonoBehaviour
 
     private void NextEnemy()
     {
+        if (_currentEnemy == 9)
+        {
+            EndGame();
+            return;
+        }
+        
+        
         _currentEnemy += 1;
         _currentHealth = enemyHealth[_currentEnemy];
         currentEnemyName.text = enemyName[_currentEnemy];
         currentEnemyImage.sprite = enemySprite[_currentEnemy];
         currentEnemyHealthText.text = enemyHealth[_currentEnemy].ToString();
     }
-    
-    
+
+    private void EndGame()
+    {
+        print("YOU WIN!!!!");
+    }
 }

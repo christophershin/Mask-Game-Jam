@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Dice : MonoBehaviour
 {
-
+    public bool CanRoll = true;
 
     bool rolled = false;
     bool grabbed = false;
@@ -30,6 +30,7 @@ public class Dice : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (CanRoll == false) return;
         Vector3 mousePos = Input.mousePosition;
 
 
