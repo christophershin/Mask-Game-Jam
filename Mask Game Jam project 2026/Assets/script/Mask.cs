@@ -22,6 +22,16 @@ public class Mask : MonoBehaviour
         // _ownedMasks.Add("Gojo");
     }
 
+    public Sprite[] GetAllSprites()
+    {
+        return sprites;
+    }
+
+    public string[] GetAllDescriptions()
+    {
+        return descriptions;
+    }
+
     void Update()
     {
         for (int i = 0; i < _ownedMasks.Count; i++)
@@ -44,6 +54,39 @@ public class Mask : MonoBehaviour
                     maskImages[i].sprite = sprites[3];
                     maskDescriptions[i].text = descriptions[3];
                     break;
+                case "Broken":
+                    maskImages[i].sprite = sprites[4];
+                    maskDescriptions[i].text = descriptions[4];
+                    break;
+                case "Devil":
+                    maskImages[i].sprite = sprites[5];
+                    maskDescriptions[i].text = descriptions[5];
+                    break;
+                case "Oops":
+                    maskImages[i].sprite = sprites[6];
+                    maskDescriptions[i].text = descriptions[6];
+                    break;
+                case "Pie":
+                    maskImages[i].sprite = sprites[7];
+                    maskDescriptions[i].text = descriptions[7];
+                    break;
+                case "Sleep":
+                    maskImages[i].sprite = sprites[8];
+                    maskDescriptions[i].text = descriptions[8];
+                    break;
+                case "Snake":
+                    maskImages[i].sprite = sprites[9];
+                    maskDescriptions[i].text = descriptions[9];
+                    break;
+                case "Theatre":
+                    maskImages[i].sprite = sprites[10];
+                    maskDescriptions[i].text = descriptions[10];
+                    break;
+                case "Welding":
+                    maskImages[i].sprite = sprites[11];
+                    maskDescriptions[i].text = descriptions[11];
+                    break;
+                
             }
         }
     }

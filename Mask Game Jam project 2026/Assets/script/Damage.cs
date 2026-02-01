@@ -110,6 +110,22 @@ public class Damage : MonoBehaviour
                 case "Gojo":
                     damage *= 10;
                     break;
+                case "Broken":
+                    break;
+                case "Devil":
+                    break;
+                case "Oops":
+                    break;
+                case "Pie":
+                    break;
+                case "Sleep":
+                    break;
+                case "Snake":
+                    break;
+                case "Theatre":
+                    break;
+                case "Welding":
+                    break;
             }
         }
         
@@ -127,7 +143,7 @@ public class Damage : MonoBehaviour
 
         if (_currentTurns <= 0)
         {
-            EndGame();
+            GameOver();
             return;
         }
     }

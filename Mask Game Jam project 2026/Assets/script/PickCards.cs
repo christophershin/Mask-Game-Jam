@@ -13,8 +13,8 @@ public class PickCards : MonoBehaviour
     [SerializeField] private Image[] masks;
     [SerializeField] private TextMeshProUGUI[] maskDescriptions;
     
-    [SerializeField] private Sprite[] sprites;
-    [SerializeField] private string[] descriptions;
+    private Sprite[] sprites;
+    private string[] descriptions;
 
     [SerializeField] private Mask maskScript;
 
@@ -28,6 +28,9 @@ public class PickCards : MonoBehaviour
 
     private void Start()
     {
+        sprites = maskScript.GetAllSprites();
+        descriptions = maskScript.GetAllDescriptions();
+
         //_dice = FindAnyObjectByType<Dice>();
         //RollCards();
     }
@@ -46,7 +49,7 @@ public class PickCards : MonoBehaviour
         
         for (int i = 0; i < masks.Length; i++)
         {
-            int roll = Random.Range(0, 4);
+            int roll = Random.Range(0, 12);
             
             print(roll);
             
@@ -63,6 +66,30 @@ public class PickCards : MonoBehaviour
                     break;
                 case 3:
                     _maskOptions.Add("Gojo");
+                    break;
+                case 4:
+                    _maskOptions.Add("Broken");
+                    break;
+                case 5:
+                    _maskOptions.Add("Devil");
+                    break;
+                case 6:
+                    _maskOptions.Add("Oops");
+                    break;
+                case 7:
+                    _maskOptions.Add("Pie");
+                    break;
+                case 8:
+                    _maskOptions.Add("Sleep");
+                    break;
+                case 9:
+                    _maskOptions.Add("Snake");
+                    break;
+                case 10:
+                    _maskOptions.Add("Theatre");
+                    break;
+                case 11:
+                    _maskOptions.Add("Welding");
                     break;
             }
             masks[i].sprite = sprites[roll];
