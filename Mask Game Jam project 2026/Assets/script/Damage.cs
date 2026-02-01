@@ -42,6 +42,7 @@ public class Damage : MonoBehaviour
     // Important
     private int _previousDamage;
     private bool _firstMask = true;
+    private bool _considerOdd = false;
 
     private gameManager GameManager;
 
@@ -139,16 +140,16 @@ public class Damage : MonoBehaviour
                     damage += 2;
                     break;
                 case "Odd":
-                    if (damage % 2 != 0) damage += 2;
+                    if ((damage % 2 != 0) || _considerOdd) damage += 2;
                     break;
                 case "Even":
                     if (damage % 2 == 0) damage += 2;
                     break;
                 case "Gojo":
-                    damage *= 5;
+                    damage *= 3;
                     break;
                 case "Broken":
-                    int brokenMaskDmg = Random.Range(0, 15);
+                    int brokenMaskDmg = Random.Range(0, 16);
                     damage += brokenMaskDmg;
                     break;
                 case "Devil":
@@ -163,13 +164,30 @@ public class Damage : MonoBehaviour
                     }
                     break;
                 case "Oops":
+                    _considerOdd = true;
                     break;
                 case "Pie":
+                    if (diceNumber == 1)
+                    {
+                        damage *= 1;
+                    }
+                    if (diceNumber == 3)
+                    {
+                        damage *= 3;
+                    }
+                    if (diceNumber == 4)
+                    {
+                        damage *= 4;
+                    }
                     break;
                 case "Sleep":
                     damage += _previousDamage / 2;
                     break;
                 case "Snake":
+                    if (diceNumber == 1)
+                    {
+                        damage *= 2;
+                    }
                     break;
                 case "Theatre":
                     if (_firstMask)

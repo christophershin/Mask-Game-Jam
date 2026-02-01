@@ -601,6 +601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948e512eab4d88d4da28ff4e86067b5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Damage
+  PostDamage: 0
   enemySprite:
   - {fileID: -7412101349327858738, guid: 260be4fa46eb37d4f812c874bac43383, type: 3}
   - {fileID: 2920897261870518306, guid: e3b411d147cecf54e9453f949165e77d, type: 3}
@@ -624,7 +625,7 @@ MonoBehaviour:
   - Thanos
   - The Masked Moggers
   enemyHealth: 1400000028000000460000006e000000a0000000
-  playerTurns: 03000000070000000c0000001100000017000000
+  playerTurns: 050000000a0000000f0000001400000019000000
   currentEnemyName: {fileID: 7946159366812007623}
   currentEnemyImage: {fileID: 3353556831004004800}
   currentEnemyHealthText: {fileID: 1312355434130762032}

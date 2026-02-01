@@ -1481,10 +1481,10 @@ MonoBehaviour:
   - x5 damage multiplier
   - adds random amount of dd from 0-15
   - 50% chance to triple dd and 50% chance to half score
-  - turn every die into a 1 no matter what
-  - if a 3,1, and 4 are rolled then the DD is multiplied by 3.14
+  - all die roll will now count as odd
+  - if 3, 1, or 4 are rolled, multiply the damage by that number rolled
   - Adds 50% of the previous rolls DD
-  - ' if 2 1s are rolled then the DD mult is x4'
+  - if 1 is rolled, double the damage
   - "After every Dice throw (turn) the mask switches to the other one, Mask 1: x2
     DD\LMask 2: +2 DD"
   - if rolled dice number is less than 3, multiply Score by 3
