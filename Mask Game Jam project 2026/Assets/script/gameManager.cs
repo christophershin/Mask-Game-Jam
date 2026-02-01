@@ -27,6 +27,9 @@ public class gameManager : MonoBehaviour
 
     private int lastMaskNum;
 
+    public AudioClip[] music;
+    private AudioSource ManagerAudio;
+
     private void Awake()
     {
 
@@ -47,7 +50,10 @@ public class gameManager : MonoBehaviour
         lastMaskNum = -1;
         Mask = GameObject.Find("Mask");
         Enemy = GameObject.Find("Enemy");
+        ManagerAudio = GetComponent<AudioSource>();
 
+        ManagerAudio.clip = music[1];
+        ManagerAudio.Play();
 
     }
 

@@ -7,6 +7,9 @@ public class Dice : MonoBehaviour
 {
     public bool CanRoll = true;
 
+    public AudioClip[] sounds;
+    private AudioSource ManagerAudio;
+
 
     bool rolled = false;
     bool grabbed = false;
@@ -23,13 +26,15 @@ public class Dice : MonoBehaviour
     public Damage damage;
     public gameManager GameManager;
 
+    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         damage = FindAnyObjectByType<Damage>();
         GameManager = FindAnyObjectByType<gameManager>();
 
-
+        ManagerAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -117,6 +122,10 @@ public class Dice : MonoBehaviour
 
         if (rolled)
         {
+            //play sound
+            ManagerAudio.clip = sounds[0];
+            ManagerAudio.Play();
+
             diceNumber = Random.Range(minDiceValue, maxDiceValue + 1);
             Debug.Log(diceNumber);
             GetComponent<SpriteRenderer>().sprite = DiceImage[diceNumber - 1];
